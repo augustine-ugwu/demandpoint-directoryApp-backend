@@ -12,7 +12,13 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://www.demandpoint.app", "http://localhost:3000"],
+    methods: "GET, POST, PUT, DELETE",
+    credentials: true, // Allow cookies & authorization headers if needed
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
